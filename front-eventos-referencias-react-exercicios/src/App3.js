@@ -27,7 +27,7 @@ function App3() {
 
   return (
     <div className="App">
-      <strong onClick={() => handleClickRed()}
+      <strong onClick={() => handleClickRed('red', 30)}
         ref={strongNameRedRef}
       >Daniel</strong>
       <strong onClick={() => handleClickGreen()}
