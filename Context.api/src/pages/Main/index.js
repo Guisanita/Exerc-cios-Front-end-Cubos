@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import UsersList from '../../components/UsersList';
 import UsersRegister from '../../components/UsersRegister';
 import './styles.css';
+import UserContext from '../../contexts/UserContext';
 
 export default function Main() {
   const [usersData, setUsersData] = useState([]);
@@ -20,20 +21,13 @@ export default function Main() {
   return (
     <div className="container-main">
 
-      <UsersRegister
-        usersData={usersData}
-        setUsersData={setUsersData}
-        setUserInEditing={setUserInEditing}
-        userInEditing={userInEditing}
-      />
-
-      <UsersList
-        usersData={usersData}
-        setUsersData={setUsersData}
-        setUserInEditing={setUserInEditing}
-        userInEditing={userInEditing}
-        handleDeleteUser={handleDeleteUser}
-      />
+      <UserContext.Provider value={{ usersData, setUsersData, userInEditing, setUserInEditing }}>
+        <UsersRegister
+        />
+        <UsersList
+          handleDeleteUser={handleDeleteUser}
+        />
+      </UserContext.Provider>
 
     </div>
   );

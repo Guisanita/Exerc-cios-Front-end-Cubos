@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "../../contexts/UserContext";
 import './styles.css';
 
 const defaultReportsState = { usersCount: 0, ageMedia: 0 };
 
-function UsersReport({ usersData }) {
-
+function UsersReport() {
   const [reports, setReports] = useState(defaultReportsState);
+  const { usersData } = useContext(UserContext);
 
   useEffect(() => {
 
@@ -24,7 +25,6 @@ function UsersReport({ usersData }) {
     }
 
     setReports(defaultReportsState);
-
   }, [usersData]);
 
   return (
